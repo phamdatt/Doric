@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontExtraBoldItalic.woff') format('woff');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontBlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fadofont';
+    src: url('FadofontBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+

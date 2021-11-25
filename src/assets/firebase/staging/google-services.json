@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "691475949786",
+    "project_id": "reactnative-eb9d5",
+    "storage_bucket": "reactnative-eb9d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691475949786:android:87c298f3b0e59974f25de3",
+        "android_client_info": {
+          "package_name": "com.doric.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691475949786-aaur2an87l5sm30g4tdpcdoa2t8vtuqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnia5ehGjG8HJptCVxvjSI3M7jCeOab6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691475949786-aaur2an87l5sm30g4tdpcdoa2t8vtuqh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "691475949786-h8eo856cfte18dbmeg0bvg5ft2r6n0e9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.doric.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
