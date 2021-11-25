@@ -75,14 +75,14 @@
     "watchman": "1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@types/lodash": "^4.14.176",
-    "@types/react": "~16.9.35",
-    "@types/react-native": "~0.63.2",
-    "@types/react-native-calendar-picker": "^7.0.2",
-    "@types/react-native-snap-carousel": "^3.8.4",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "typescript": "~4.0.0"
+    "@babel/core": "7.9.0",
+    "@types/lodash": "4.14.176",
+    "@types/react": "16.9.35",
+    "@types/react-native": "0.63.2",
+    "@types/react-native-calendar-picker": "7.0.2",
+    "@types/react-native-snap-carousel": "3.8.4",
+    "babel-plugin-module-resolver": "4.1.0",
+    "typescript": "4.0.0"
   },
   "private": true
 }
