@@ -37,6 +37,7 @@ const DEVELOPMENT_CONFIG = {
   extra: {
     APP_ENV: ENV_DEVELOPMENT,
     API_BASE_URL: "http://172.16.2.138:3000",
+    FACABOOK_ID: "857277571520854",
     SENTRY_DSN:
       "https://e0944192002440a393aea9f7295a688c@o1077895.ingest.sentry.io/6081229",
   },
@@ -65,6 +66,7 @@ const PRODUCTION_CONFIG = {
   extra: {
     APP_ENV: ENV_PRODUCTION,
     API_BASE_URL: "http://172.16.2.138:3000",
+    FACABOOK_ID: "857277571520854",
     SENTRY_DSN:
       "https://e0944192002440a393aea9f7295a688c@o1077895.ingest.sentry.io/6081229",
   },

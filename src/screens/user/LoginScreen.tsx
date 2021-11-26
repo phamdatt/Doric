@@ -18,8 +18,8 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Modalize } from "react-native-modalize";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import * as Google from "expo-google-app-auth";
-import * as Facebook from 'expo-facebook';
-
+import * as Facebook from "expo-facebook";
+import { FACEBOOK_ID } from "@/config/app";
 
 // 201428760739-2m4n7nuotvv8lagp9p92vojuh3mock1r.apps.googleusercontent.com
 const LoginScreen = () => {
@@ -52,31 +52,32 @@ const LoginScreen = () => {
           });
         }
       })
-      .catch(() => { })
-      .finally(() => { });
+      .catch(() => {})
+      .finally(() => {});
   };
   const loginByFacebook = async () => {
     try {
       await Facebook.initializeAsync({
-        appId: '857277571520854',
+        appId: FACEBOOK_ID,
       });
-      const {
-        type,
-        token
-      }: any = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      });
-      if (type === 'success') {
+      const { type, token }: any = await Facebook.logInWithReadPermissionsAsync(
+        {
+          permissions: ["public_profile"],
+        }
+      );
+      if (type === "success") {
         // Get the user's name using Facebook's Graph API
-        const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-        Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}`
+        );
+        Alert.alert("Logged in!", `Hi ${(await response.json()).name}!`);
       } else {
         // type === 'cancel'
       }
     } catch ({ message }) {
       alert(`Facebook Login Error: ${message}`);
     }
-  }
+  };
   return (
     <View style={styles.screen}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
