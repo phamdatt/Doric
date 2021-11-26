@@ -36,11 +36,7 @@ const DEVELOPMENT_CONFIG = {
   },
   extra: {
     APP_ENV: ENV_DEVELOPMENT,
-    APP_ID: "8888",
-    API_BASE_URL: "https://staging-api.woka.io/v1",
-    API_KEY: "35c4d944-a5ac-4e60-905b-df6b045c2e2a",
-    FACEBOOK_APP_ID: "",
-    FACEBOOK_DISPLAY_NAME: "",
+    API_BASE_URL: "http://172.16.2.138:3000",
     SENTRY_DSN:
       "https://e0944192002440a393aea9f7295a688c@o1077895.ingest.sentry.io/6081229",
   },
@@ -53,7 +49,8 @@ const PRODUCTION_CONFIG = {
     buildNumber: APP_BUILD_NUMBER + "",
     requireFullScreen: true,
     bundleIdentifier: "com.doric.ios",
-    googleServicesFile: "./src/assets/firebase/staging/GoogleService-Info.plist",
+    googleServicesFile:
+      "./src/assets/firebase/staging/GoogleService-Info.plist",
   },
   android: {
     versionCode: APP_BUILD_NUMBER,
@@ -67,21 +64,15 @@ const PRODUCTION_CONFIG = {
   },
   extra: {
     APP_ENV: ENV_PRODUCTION,
-    APP_ID: "8888",
-    API_BASE_URL: "https://staging-api.woka.io/v1",
-    API_KEY: "35c4d944-a5ac-4e60-905b-df6b045c2e2a",
-    FACEBOOK_APP_ID: "",
-    FACEBOOK_DISPLAY_NAME: "",
+    API_BASE_URL: "http://172.16.2.138:3000",
     SENTRY_DSN:
       "https://e0944192002440a393aea9f7295a688c@o1077895.ingest.sentry.io/6081229",
   },
 };
 
-
 const APP_DEV_CONFIG = {
   [ENV_DEVELOPMENT]: DEVELOPMENT_CONFIG,
   [ENV_PRODUCTION]: PRODUCTION_CONFIG,
-
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => {
