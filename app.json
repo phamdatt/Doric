@@ -3,6 +3,7 @@
   "slug": "doric",
   "expo": {
     "name": "my-project",
-    "slug": "my-project"
+    "slug": "my-project",
+      
   }
 }
