@@ -12,7 +12,7 @@ const APP_ENV = [ENV_DEVELOPMENT, ENV_PRODUCTION, ENV_STAGING].includes(
 
 // Please increase version before start new build
 const APP_VERSION = "1.0.3";
-const APP_BUILD_NUMBER = 3;
+const APP_BUILD_NUMBER = 4;
 
 const DEVELOPMENT_CONFIG = {
   name: "DoricDev",
