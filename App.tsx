@@ -1,15 +1,16 @@
-import 'react-native-gesture-handler';
-import React, { useState } from 'react';
-import AppLoading from 'expo-app-loading';
-import { assetFonts } from './asset';
-import { cacheFonts, cacheImages } from './src/helper/assetCachingHelper';
-import RootNavigation from './src/navigation/RootNavigator';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NativeBaseProvider } from 'native-base';
-import { assetImages } from './src/config';
-import * as Font from 'expo-font';
-import * as Sentry from 'sentry-expo';
-import {  SENTRY_DSN } from '@/config/app';
+import "react-native-gesture-handler";
+import React, { useState } from "react";
+import AppLoading from "expo-app-loading";
+import { assetFonts } from "./asset";
+import { cacheFonts, cacheImages } from "./src/helper/assetCachingHelper";
+import RootNavigation from "./src/navigation/RootNavigator";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NativeBaseProvider } from "native-base";
+import { assetImages } from "./src/config";
+import * as Font from "expo-font";
+import * as Sentry from "sentry-expo";
+import { SENTRY_DSN } from "@/config/app";
+
 export default function App() {
   const [isReady, setIsReady] = useState(false);
   const startApp = async () => {

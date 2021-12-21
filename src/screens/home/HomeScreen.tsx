@@ -1,8 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useContext, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../../redux/action/increment";
 import { SCREEN_NAME } from "../../screensContants/contants";
 import ProductBanner from "./ProductBanner";
 import ProductTopTrending from "./ProductTopTrending";
@@ -14,7 +12,7 @@ import { Box } from "native-base";
 import { getAllProduct } from "../../service/api/product/getAllProduct";
 
 const HomeScreen = () => {
-
+  
   const [data, setData] = useState<any[]>([]);
   const { setIsShowFullscreenLoading } = useContext(FullscreenLoadingContext);
   const navigation = useNavigation();

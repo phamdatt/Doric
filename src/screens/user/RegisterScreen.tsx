@@ -17,7 +17,7 @@ const RegisterScreen = () => {
 
   const onRegister = () => {
     register({
-      email: 'hieuminh@gmail.com',
+      email: 'hellos@gmail.com',
       password: '123456',
       username: 'minhdat',
       phonenumber: Number('0333727182'),

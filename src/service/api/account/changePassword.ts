@@ -7,5 +7,5 @@ export interface RequestParamsInterface {
 }
 
 export async function changePassword(requestParams: RequestParamsInterface) {
-  return await httpClient.post("/auth/changePassword", { ...requestParams });
+  return await httpClient.post("/account/changePassword", { ...requestParams });
 }

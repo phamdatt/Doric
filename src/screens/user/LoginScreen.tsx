@@ -21,6 +21,7 @@ import * as Google from "expo-google-app-auth";
 import * as Facebook from "expo-facebook";
 import { FACEBOOK_ID } from "@/config/app";
 
+
 // 201428760739-2m4n7nuotvv8lagp9p92vojuh3mock1r.apps.googleusercontent.com
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -78,6 +79,8 @@ const LoginScreen = () => {
       alert(`Facebook Login Error: ${message}`);
     }
   };
+  
+
   return (
     <View style={styles.screen}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -168,9 +171,7 @@ const LoginScreen = () => {
               _pressed={{ opacity: 0.5 }}
               borderRadius={8}
               flex={1}
-              onPress={() => {
-                navigation.navigate(SCREEN_NAME.HOME_NAVIGATOR);
-              }}
+             
             >
               Đăng nhập
             </Button>

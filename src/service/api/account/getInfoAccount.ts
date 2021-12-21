@@ -4,5 +4,5 @@ export interface RequestParamsInterface {
 }
 
 export async function getUserInfo(requestParams: RequestParamsInterface) {
-  return await httpClient.post("/auth/getUserInfo", { ...requestParams });
+  return await httpClient.post("/account/getUserInfo", { ...requestParams });
 }

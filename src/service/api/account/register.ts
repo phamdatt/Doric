@@ -9,5 +9,5 @@ export interface RequestParamsInterface {
 }
 
 export async function register(requestParams: RequestParamsInterface) {
-  return await httpClient.post("/auth/register", {...requestParams});
+  return await httpClient.post("/account/register", {...requestParams});
 }
