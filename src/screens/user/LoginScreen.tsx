@@ -20,10 +20,12 @@ import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import * as Google from "expo-google-app-auth";
 import * as Facebook from "expo-facebook";
 import { FACEBOOK_ID } from "@/config/app";
-
+import { userSelectors, userActions } from "@/redux/store/userReducerScreen";
+import { useAppDispatch, useAppSelector } from "@/redux/index";
 
 // 201428760739-2m4n7nuotvv8lagp9p92vojuh3mock1r.apps.googleusercontent.com
 const LoginScreen = () => {
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
   const toas = useToast();
   const {
@@ -79,8 +81,23 @@ const LoginScreen = () => {
       alert(`Facebook Login Error: ${message}`);
     }
   };
-  
-
+  const login = () => {
+    dispatch(
+      userActions.login({
+        email: "hellos@gmail.com",
+        password: "123456",
+      })
+    )
+      .unwrap()
+      .then((resp) => {
+       if(resp.code !== 0){
+         return;
+       }
+       navigation.navigate(SCREEN_NAME.HOME)
+      });
+  };
+  console.warn(useAppSelector(userSelectors.getUserInfo))
+  console.warn(useAppSelector(userSelectors.isLogger))
   return (
     <View style={styles.screen}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -171,7 +188,7 @@ const LoginScreen = () => {
               _pressed={{ opacity: 0.5 }}
               borderRadius={8}
               flex={1}
-             
+              onPress={login}
             >
               Đăng nhập
             </Button>

@@ -10,6 +10,8 @@ import { assetImages } from "./src/config";
 import * as Font from "expo-font";
 import * as Sentry from "sentry-expo";
 import { SENTRY_DSN } from "@/config/app";
+import store from "@/redux/index";
+import { Provider } from "react-redux";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -35,10 +37,12 @@ export default function App() {
     );
   }
   return (
-    <NativeBaseProvider>
-      <SafeAreaProvider>
-        <RootNavigation></RootNavigation>
-      </SafeAreaProvider>
-    </NativeBaseProvider>
+    <Provider store={store}>
+      <NativeBaseProvider>
+        <SafeAreaProvider>
+          <RootNavigation></RootNavigation>
+        </SafeAreaProvider>
+      </NativeBaseProvider>
+    </Provider>
   );
 }
