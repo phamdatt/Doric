@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, ImageBackground, ScrollView, Text } from 'react-native';
-import { Box, Heading } from 'native-base';
-import { SCREEN_NAME } from '../../screensContants/contants';
+import { View, ImageBackground, ScrollView } from 'react-native';
 import UserLoginSection from './UserLoginSection';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import UserSectionInfo from './UserSectionInfo';
@@ -10,6 +8,8 @@ import { userSelectors } from '@/redux/store/userReducerScreen';
 import { useAppSelector } from '@/redux';
 const UserHomeScreen = () => {
   const isLogg = useAppSelector(userSelectors.isLogger);
+  const info = useAppSelector(userSelectors.getUserInfo);
+
   const isLogger = useMemo(() => {
     return isLogg;
   }, [isLogg]);

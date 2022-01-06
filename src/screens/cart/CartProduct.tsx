@@ -18,7 +18,7 @@ const CartProduct = (props: PropsData) => {
     <Box flex={1}>
       {cartItem?.items.map((item: any) => {
         return (
-          <Box flexDirection="row" width="100%" py={4}>
+          <Box flexDirection="row" width="100%" py={4} key={item._id}>
             <Pressable
               flex={0.3}
               height={100}

@@ -12,13 +12,11 @@ import { Box } from "native-base";
 import { getAllProduct } from "../../service/api/product/getAllProduct";
 
 const HomeScreen = () => {
-  
+
   const [data, setData] = useState<any[]>([]);
   const { setIsShowFullscreenLoading } = useContext(FullscreenLoadingContext);
   const navigation = useNavigation();
-  useEffect(() => {
-    navigation.navigate(SCREEN_NAME.PRODUCT_LIST_FAVORITE_SCREEN)
-  }, [])
+
   useEffect(() => {
     getAllProduct()
       .then((resp) => {

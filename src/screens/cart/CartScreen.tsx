@@ -39,7 +39,7 @@ const CartScreen = () => {
             <CartEmpty />
           ) : (
             <Box flex={1} backgroundColor="white">
-              <ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}>
                 <Box flex={1} px={4}>
                   {data.map((item) => (
                     <CartProduct cartItem={item} key={item._id} />

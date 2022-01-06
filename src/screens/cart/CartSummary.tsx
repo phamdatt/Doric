@@ -26,6 +26,18 @@ const CartSummary = (props: any) => {
       backgroundColor="white"
     >
       <Box>
+
+        <Box flexDirection="row" py={2}>
+          <Box>
+            <Text fontWeight="bold">Giảm giá</Text>
+          </Box>
+          <Box ml="auto">
+            <Text fontWeight="bold">0</Text>
+          </Box>
+        </Box>
+        <Divider />
+      </Box>
+      <Box>
         <Box flexDirection="row" py={2}>
           <Box>
             <Text fontWeight="bold">Tổng tiền</Text>
@@ -36,6 +48,7 @@ const CartSummary = (props: any) => {
         </Box>
         <Divider />
       </Box>
+
       <Pressable
         p={4}
         backgroundColor="black"

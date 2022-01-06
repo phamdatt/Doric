@@ -17,13 +17,16 @@ import { assetImages } from "../../config";
 import { getProductDetail } from "../../service/api/product/getProductDetail";
 import { FullscreenLoadingContext } from "../../context/loadingScreen";
 import { getProductRelate } from "../../service/api/product/getProductRelate";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import ImageViewer from "react-native-image-zoom-viewer";
 import { addToCart } from "../../service/api/card/addToCart";
 import { formatNumber } from "../../helper/formatNumberHelper";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { addProductFavorite } from "../../service/api/favoriteProduct/addProductFavorite";
+import { userSelectors } from '@/redux/store/userReducerScreen';
+import { useAppSelector } from '@/redux';
+
 
 export interface RouteParamsInterface {
   productId: string;
@@ -32,6 +35,7 @@ export interface RouteParamsInterface {
 
 const ProductDetailScreen = () => {
 
+  const info = useAppSelector(userSelectors.getUserInfo);
   const theme = useTheme<ThemeType>();
   const WINDOW_WIDTH = Dimensions.get("window").width;
   const imageItemWidth = WINDOW_WIDTH - 16;
@@ -87,6 +91,7 @@ const ProductDetailScreen = () => {
   };
   const onAddToCart = (dataProductDetail: any) => {
     addToCart({
+      owner: info.email,
       productId: productId,
 
     })

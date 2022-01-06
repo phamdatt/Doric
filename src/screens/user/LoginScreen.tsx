@@ -55,8 +55,8 @@ const LoginScreen = () => {
           });
         }
       })
-      .catch(() => {})
-      .finally(() => {});
+      .catch(() => { })
+      .finally(() => { });
   };
   const loginByFacebook = async () => {
     try {
@@ -90,14 +90,12 @@ const LoginScreen = () => {
     )
       .unwrap()
       .then((resp) => {
-       if(resp.code !== 0){
-         return;
-       }
-       navigation.navigate(SCREEN_NAME.HOME)
+        if (resp.code !== 0) {
+          return;
+        }
+        navigation.navigate(SCREEN_NAME.HOME)
       });
   };
-  console.warn(useAppSelector(userSelectors.getUserInfo))
-  console.warn(useAppSelector(userSelectors.isLogger))
   return (
     <View style={styles.screen}>
       <StatusBar backgroundColor="black" barStyle="light-content" />

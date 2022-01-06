@@ -2,7 +2,7 @@ import { ResponsePayloadInterface } from "./../../../helper/httpClient";
 import { httpClient } from "../../../helper/httpClient";
 
 export interface RequestParams {
-  // userId: '61c05331752b2516d230208d';
+  owner:string;
   productId: any;
 }
 export async function addToCart(req: RequestParams) {
