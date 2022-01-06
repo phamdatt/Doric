@@ -10,7 +10,7 @@ export interface ResponsePayloadInterface<T = any> {
 }
 export const httpClient = axios.create({
   timeout: 3000,
-  baseURL: "http://192.168.1.97:3000",
+  baseURL: "http://127.0.0.1:3000",
   headers: {
     "content-type": "application/json",
   },

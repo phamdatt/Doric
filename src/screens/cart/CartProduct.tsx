@@ -16,7 +16,7 @@ const CartProduct = (props: PropsData) => {
   const theme = useTheme<ThemeType>();
   return (
     <Box flex={1}>
-      {cartItem?.itemList.map((item: any) => {
+      {cartItem?.items.map((item: any) => {
         return (
           <Box flexDirection="row" width="100%" py={4}>
             <Pressable
@@ -31,7 +31,7 @@ const CartProduct = (props: PropsData) => {
               justifyContent="center"
               _pressed={{ opacity: 0.5 }}
               onPress={() => {
-                navigation.navigate(SCREEN_NAME.PRODUCT_DETAIL_SCREEN, {
+                navigation.push(SCREEN_NAME.PRODUCT_DETAIL_SCREEN, {
                   productId: item._id,
                 });
               }}
@@ -40,7 +40,7 @@ const CartProduct = (props: PropsData) => {
                 source={{
                   uri: item.image[0].imageThumnail,
                 }}
-                resizeMode="cover"
+                resizeMode="contain"
                 style={{ height: 60, width: 60 }}
               />
             </Pressable>
@@ -95,7 +95,7 @@ const CartProduct = (props: PropsData) => {
                     <FontAwesome5 name="minus" size={10} />
                   </Pressable>
                   <Box px={2}>
-                    <Text>1</Text>
+                    <Text>{cartItem.quantity}</Text>
                   </Box>
                   <Pressable
                     p={1}

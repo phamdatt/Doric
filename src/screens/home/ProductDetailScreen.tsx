@@ -87,10 +87,8 @@ const ProductDetailScreen = () => {
   };
   const onAddToCart = (dataProductDetail: any) => {
     addToCart({
-      userId: "22",
       productId: productId,
-      quantity: 1,
-      price: dataProductDetail.price,
+
     })
       .then((resp) => {
         toast.show({

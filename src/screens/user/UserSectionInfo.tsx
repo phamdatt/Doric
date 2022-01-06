@@ -109,6 +109,7 @@ function createStyle(theme: ThemeType) {
       marginBottom: 8,
       fontWeight: '700',
       color: theme.colors.gray[800],
+      marginTop: 16,
     },
     menuItem: {
       flexDirection: 'row',

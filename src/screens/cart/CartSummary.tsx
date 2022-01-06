@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Box, Text, Divider, Pressable } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { SCREEN_NAME } from "../../screensContants/contants";
+import { formatNumber } from "@/helper/formatNumberHelper";
 
-const CartSummary = () => {
+const CartSummary = (props: any) => {
+  const { data } = props;
   const navigation: any = useNavigation();
   const onCheckout = () => {
     navigation.navigate(SCREEN_NAME.CHEKCOUT_SCREEN);
   };
+  const totalPirce = useMemo(() => {
+    return data?.reduce((total, item) => {
+      return total + item.totalPrice;
+    }, 0);
+  }, []);
   return (
     <Box
       px={4}
@@ -24,7 +31,7 @@ const CartSummary = () => {
             <Text fontWeight="bold">Tổng tiền</Text>
           </Box>
           <Box ml="auto">
-            <Text fontWeight="bold">999</Text>
+            <Text fontWeight="bold">{formatNumber(totalPirce)}</Text>
           </Box>
         </Box>
         <Divider />
@@ -44,7 +51,7 @@ const CartSummary = () => {
           Thanh toán
         </Text>
       </Pressable>
-    </Box>
+    </Box >
   );
 };
 

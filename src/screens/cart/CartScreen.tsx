@@ -1,32 +1,26 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import CartDiscountSection from "./CartDiscount";
-import { Box, useTheme } from "native-base";
-import { useNavigation } from "@react-navigation/native";
-import { ThemeType } from "../../theme";
+import { Box } from "native-base";
 import CartProduct from "./CartProduct";
 import CartSummary from "./CartSummary";
 import Header from "../../components/header";
-import { FullscreenLoadingContext } from "../../context/loadingScreen";
 import { getCart } from "../../service/api/card/getCart";
 import CartEmpty from "./CartEmpty";
-import isEmpty from "lodash";
-import { backgroundColor } from "styled-system";
+import { ActivityIndicator } from "react-native";
 
 const CartScreen = () => {
-  const theme = useTheme<ThemeType>();
-  const navigation: any = useNavigation();
-  const { setIsShowFullscreenLoading } = useContext(FullscreenLoadingContext);
   const [data, setData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
-    setIsShowFullscreenLoading(true);
+    setIsLoading(true);
     getCart()
       .then((resp) => {
         setData(resp.data.payload);
       })
-      .catch((err) => {})
+      .catch((err) => { })
       .finally(() => {
-        setIsShowFullscreenLoading(false);
+        setIsLoading(false);
       });
   }, []);
   return (
@@ -37,21 +31,27 @@ const CartScreen = () => {
         rightCol={false}
         menuIcon={true}
       />
-      {data.length <= 0 ? (
-        <CartEmpty />
-      ) : (
-        <Box flex={1} backgroundColor="white">
-          <ScrollView>
-            <Box flex={1} px={4}>
-              {data.map((item) => (
-                <CartProduct cartItem={item} key={item._id} />
-              ))}
+      {
+        isLoading ? <Box>
+          <ActivityIndicator size="small" color="black" />
+        </Box> : <>
+          {data.length <= 0 ? (
+            <CartEmpty />
+          ) : (
+            <Box flex={1} backgroundColor="white">
+              <ScrollView>
+                <Box flex={1} px={4}>
+                  {data.map((item) => (
+                    <CartProduct cartItem={item} key={item._id} />
+                  ))}
+                </Box>
+                <CartDiscountSection />
+              </ScrollView>
+              <CartSummary data={data} />
             </Box>
-            <CartDiscountSection />
-          </ScrollView>
-          <CartSummary />
-        </Box>
-      )}
+          )}
+        </>
+      }
     </Box>
   );
 };

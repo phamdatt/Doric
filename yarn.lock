@@ -8254,9 +8254,9 @@ typescript-string-operations@1.4.1:
   integrity sha512-c+q+Tb0hxeebohdT9KpGUAm5zwxhU8pHeNOeuLCGFMXKN0OrldoAxtufrGLR3xSPCXDA4A3IBCEdRNNscVqLQg==
 
 typescript@4.0.0:
-  version "4.6.0-dev.20211220"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20211220.tgz#0fa0e467ea2a0f4331d2e07ce4c56abb57fd1b00"
-  integrity sha512-Q5r48HCjD/dgefPknm6NecnILcKyUTXotrspQfdmPI58Z0gXA7A2s46Wfh5zmsiW6lejJYJ82O28iOwiWk2JPg==
+  version "4.6.0-dev.20220104"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20220104.tgz#ec5069ad0a698988078618d14f206b678130c49e"
+  integrity sha512-0tyxo2USt1H/6fFqNavxNqTEWZyjljAKii/JgzmS0YEyA/CnPMeeJ4+ra5pzIj10LvZw/S+VliHwYHDMm/vqBA==
 
 ua-parser-js@^0.7.18:
   version "0.7.28"
