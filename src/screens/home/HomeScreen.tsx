@@ -16,7 +16,9 @@ const HomeScreen = () => {
   const [data, setData] = useState<any[]>([]);
   const { setIsShowFullscreenLoading } = useContext(FullscreenLoadingContext);
   const navigation = useNavigation();
-
+  // useEffect(() => {
+  //   navigation.navigate(SCREEN_NAME.ORDER_DETAIL)
+  // }, [])
   useEffect(() => {
     getAllProduct()
       .then((resp) => {

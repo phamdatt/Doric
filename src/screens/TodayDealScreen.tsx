@@ -1,129 +1,125 @@
-import React, { useState, useMemo } from "react";
-import { Box, Pressable, useTheme } from "native-base";
-import { Header } from "react-native/Libraries/NewAppScreen";
-import ProductCardMini from '@/components/productCardMini';
-import { FlatList, StyleSheet } from 'react-native';
-import { ThemeType } from '@/theme/index'
+import React, { useMemo, useState, useEffect, useContext } from "react";
+import { View, FlatList, StyleSheet, Image, Dimensions } from "react-native";
+import { Text, Box, useTheme } from "native-base";
+import Header from "../components/header";
 import { useNavigation } from "@react-navigation/native";
-import { SCREEN_NAME } from "@/screensContants/contants";
-const data = [
-  {
-    id: 1,
-    productName: 'Quan tay',
-    productPrice: 250000,
-    description: 'Quần tây nam đẹp gía tốt',
-    discount: 25,
-    productImage: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212011F128178_5/nike-air-force-1-shadow-sneakers.jpg',
-    catId: 5,
-    productFrom: '',
-    productDescription: '',
-    productUrl: '',
-  },
-  {
-    id: 2,
-    productName: 'Quan tay',
-    productPrice: 250000,
-    description: 'Quần tây nam đẹp gía tốt',
-    discount: 25,
-    productImage: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212011F128178_5/nike-air-force-1-shadow-sneakers.jpg',
-    catId: 5,
-    productFrom: '',
-    productDescription: '',
-    productUrl: '',
-  },
-  {
-    id: 3,
-    productName: 'Quan tay',
-    productPrice: 250000,
-    description: 'Quần tây nam đẹp gía tốt',
-    discount: 25,
-    productImage: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212011F128178_5/nike-air-force-1-shadow-sneakers.jpg',
-    catId: 5,
-    productFrom: '',
-    productDescription: '',
-    productUrl: '',
-  },
-  {
-    id: 4,
-    productName: 'Quan tay',
-    productPrice: 250000,
-    description: 'Quần tây nam đẹp gía tốt',
-    discount: 25,
-    productImage: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212011F128178_5/nike-air-force-1-shadow-sneakers.jpg',
-    catId: 5,
-    productFrom: '',
-    productDescription: '',
-    productUrl: '',
-  }
-]
+import ProductCardMini from "../components/productCardMini";
+import { ThemeType } from "../theme";
+import { useRoute } from "@react-navigation/native";
+import { FullscreenLoadingContext } from "../context/loadingScreen";
+import { assetImages } from "../config";
+import { getTodayDeal } from "@/service/api/other/getTodayDeal";
+
+export interface RouteParamsInterface {
+  slug: string;
+  catId: number;
+}
 const TodayDealScreen = () => {
-  const navigation = useNavigation();
   const theme = useTheme<ThemeType>();
+  const route = useRoute();
+  const [dataProduct, setDataProduct] = useState<any[]>([]);
+  const { setIsShowFullscreenLoading } = useContext(FullscreenLoadingContext);
+
   const styles = useMemo(() => {
     return createStyle(theme);
   }, []);
 
-  const [value, setValue] = useState<any>("");
-  const renderItem = ({ item, index }: { item: any, index: number }) => {
-    return (
-      <Pressable
-        width="50%"
-        style={index % 2 === 0 ? styles.itemColEven : styles.itemColOdd}
-        onPress={() => {
-          navigation.navigate(SCREEN_NAME.PRODUCT_DETAIL_SCREEN, {
-            productId: item.id,
-            catId: item.catId,
-          })
-        }}
-        _pressed={{ opacity: 0.5 }}
-      >
-        <ProductCardMini
-          productCatId={item.catId}
-          productId={item.id}
-          productImage={item.productImage}
-          productDescription={item.productDescription}
-          productPrice={item.productPrice}
-          productFrom={item.productFrom}
-          propductName={item.productName}
-          productPercent={item.discount}
-          productUrl={item.productUrl}
-        />
-      </Pressable>
-    )
-  }
+  const navigation: any = useNavigation();
+  useEffect(() => {
+    setIsShowFullscreenLoading(true);
+    getTodayDeal()
+      .then((resp) => {
+        setDataProduct(resp.data?.payload ?? []);
+      })
+      .catch(() => { })
+      .finally(() => {
+        setIsShowFullscreenLoading(false);
+      });
+  }, []);
+
   return (
-    <Box flex={1}>
-      <Header leftCol={true} headerTitle="Giảm giá hôm nay" menuIcon={false} rightCol={true} />
-      <Box width="100%" flexDirection="row">
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-        />
-      </Box>
-    </Box>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      {
+        dataProduct.length <= 0 ?
+          <Box justifyContent="center" flex={1}>
+            <Image source={assetImages.character} resizeMode="contain" style={{ height: 200, width: Dimensions.get('window').width }} />
+            <Text textAlign="center">Hiện tại không tìm thấy dữ liệu sản phẩm này</Text>
+          </Box>
+          : <Box flex={1}>
+            <Header
+              headerTitle="Today Deal"
+              leftCol={true}
+              rightCol={true}
+              menuIcon={true}
+            />
+            <FlatList
+              data={dataProduct}
+              contentContainerStyle={{
+                marginTop: 10,
+              }}
+              renderItem={({ item }) => {
+                return (
+                  <Box width="50%" p={1} key={item._id}>
+                    <ProductCardMini
+                      productId={item._id}
+                      propductName={item.name}
+                      productImage={item.image}
+                      productPercent={item.disCount}
+                      productPrice={item.price}
+                      productDescription={item.description}
+                      productCatId={item.catId}
+                    />
+                  </Box>
+                );
+              }}
+              keyExtractor={(item) => item.name}
+              numColumns={2}
+            />
+          </Box >
+      }
+    </View >
   );
 };
 
 export default TodayDealScreen;
-export function createStyle(theme: ThemeType) {
+
+function createStyle(theme: ThemeType) {
   return StyleSheet.create({
-    itemColOdd: {
-      // cột lẽ
-      borderRightWidth: 1,
-      borderRightColor: theme.colors.gray[200],
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.gray[200],
-      padding: 16,
-      width: "50%",
+    screen: {
+      flex: 1,
+      backgroundColor: theme.colors.white,
     },
-    itemColEven: {
-      // cột chẳn
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.gray[200],
-      padding: 16,
-      width: "50%",
+    tabBox: {
+      backgroundColor: theme.colors.white,
+      shadowColor: theme.colors.gray[300],
+      shadowOffset: { height: 2, width: 0 },
+      shadowOpacity: 2,
+      shadowRadius: 1,
     },
-  })
+    tabBarItem: {
+      flexDirection: "row",
+    },
+    tabBarItemBtn: {
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      marginLeft: 14,
+    },
+    tabBarItemBtnActive: {
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      marginLeft: 14,
+      borderBottomColor: theme.colors.gray[600],
+      borderBottomWidth: 3,
+    },
+    tabBarItemTitle: {
+      color: theme.colors.gray[400],
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+    tabBarItemTitleActive: {
+      color: theme.colors.black[400],
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+  });
 }

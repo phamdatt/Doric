@@ -24,7 +24,7 @@ import TodayDealScreen from "@/screens/TodayDealScreen";
 import { Modal, Text } from 'native-base';
 import ProductListFavoriteScreen from '@/screens/favorite/ProductListFavoriteScreen';
 import { Host } from 'react-native-portalize';
-
+import OrderDetail from "@/screens/user/OrderDetailScreen";
 
 const MainStack = createStackNavigator();
 
@@ -103,6 +103,10 @@ function RootNavigator() {
             <MainStack.Screen
               name={SCREEN_NAME.PRODUCT_LIST_FAVORITE_SCREEN}
               component={ProductListFavoriteScreen}
+            />
+            <MainStack.Screen
+              name={SCREEN_NAME.ORDER_DETAIL}
+              component={OrderDetail}
             />
             <MainStack.Screen name="Detail" component={Details} />
           </MainStack.Navigator>

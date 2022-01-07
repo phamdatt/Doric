@@ -78,19 +78,29 @@ const CartProduct = (props: PropsData) => {
               <Box mt={2} flexDirection="row">
                 <Box>
                   <Text
-                    fontSize={theme.fontSizes.md}
-                    fontFamily={theme.fonts.FadoBold}
+                    fontSize={theme.fontSizes.xs}
+                    fontFamily={theme.fonts.Oswald}
                     fontWeight="bold"
                   >
                     {formatNumber(item.price)}
                   </Text>
+                  <Text
+                    fontSize={theme.fontSizes.sm}
+                    fontFamily={theme.fonts.Oswald}
+                    fontWeight="bold"
+                  >
+                    {formatNumber(item.price * (cartItem.quantity))}<Text fontSize={theme.fontSizes.xs}>{'x'}{cartItem.quantity}</Text>
+                  </Text>
                 </Box>
                 <Box ml="auto" flexDirection="row" mr={3}>
                   <Pressable
-                    p={1}
+                    w={6}
+                    h={6}
                     borderRadius={60}
                     borderWidth={1}
                     _pressed={{ opacity: 0.5 }}
+                    justifyContent="center"
+                    alignItems="center"
                   >
                     <FontAwesome5 name="minus" size={10} />
                   </Pressable>
@@ -98,10 +108,13 @@ const CartProduct = (props: PropsData) => {
                     <Text>{cartItem.quantity}</Text>
                   </Box>
                   <Pressable
-                    p={1}
+                    w={6}
+                    h={6}
                     borderRadius={60}
                     borderWidth={1}
                     _pressed={{ opacity: 0.5 }}
+                    justifyContent="center"
+                    alignItems="center"
                   >
                     <FontAwesome5 name="plus" size={10} />
                   </Pressable>

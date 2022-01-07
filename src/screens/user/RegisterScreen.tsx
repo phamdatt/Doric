@@ -25,10 +25,10 @@ const RegisterScreen = () => {
       birthday: 123,
     })
       .then((resp) => {
-        
+
       })
-      .catch((error) => {})
-      .finally(() => {});
+      .catch((error) => { })
+      .finally(() => { });
   };
 
   return (
@@ -137,24 +137,26 @@ const RegisterScreen = () => {
               )}
             />
           </FormControl>
-          <Box px={2} py={4} flexDirection="row">
+          <Box flexDirection="row" my={4}>
             <Button
-              _pressed={{ opacity: 0.5 }}
               backgroundColor="black"
-              _text={{
-                color: "white",
-              }}
-              onPress={() => {
-                navigation.navigate(SCREEN_NAME.LOGINSCREEN);
-              }}
+              _pressed={{ opacity: 0.5 }}
+              borderRadius={8}
+              flex={1}
+
             >
-              Đăng nhap
+              Đăng nhập
             </Button>
             <Button
+              flex={1}
+              ml={2}
               _pressed={{ opacity: 0.5 }}
-              backgroundColor="black"
+              borderRadius={8}
+              borderWidth={1}
+              borderColor="black"
+              variant="unstyled"
               _text={{
-                color: "white",
+                color: "black",
               }}
               onPress={onRegister}
             >
@@ -163,7 +165,7 @@ const RegisterScreen = () => {
           </Box>
         </Box>
       </Animated.View>
-    </View>
+    </View >
   );
 };
 

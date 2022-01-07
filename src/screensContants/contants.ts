@@ -21,5 +21,5 @@ export const SCREEN_NAME = {
   TODAY_DEAL_SCREEN: "TodayDealScreen",
   HOME: "Home",
   PRODUCT_LIST_FAVORITE_SCREEN: "ProductListFavoriteScreen",
-  ABC:"ádádsadsadasdasdád",
+  ORDER_DETAIL:'OrderDetail'
 };
